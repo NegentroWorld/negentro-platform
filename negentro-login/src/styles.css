@@ -1,0 +1,488 @@
+:root {
+  color: #0d0d0d;
+  font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #fff;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+.auth-shell {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #fff;
+}
+
+.splash {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 66% 44%, #765dfb 0 12%, rgba(118, 93, 251, .86) 28%, rgba(118, 93, 251, .24) 58%, rgba(118, 93, 251, 0) 77%),
+    linear-gradient(132deg, #faf9ff 2%, #ece9ff 40%, #fcfbff 100%);
+}
+
+.splash::before {
+  content: '';
+  position: absolute;
+  inset: -14%;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 72% 45%, rgba(48, 22, 190, .3), transparent 35%),
+    radial-gradient(circle at 37% 73%, rgba(255, 255, 255, .92), transparent 38%);
+  filter: blur(25px);
+}
+
+.splash::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: .16;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.splash__glow {
+  position: absolute;
+  width: 34vw;
+  height: 34vw;
+  max-width: 570px;
+  max-height: 570px;
+  top: 15%;
+  right: 2%;
+  border-radius: 50%;
+  background: rgba(118, 93, 251, .2);
+  filter: blur(68px);
+}
+
+.splash__header {
+  position: absolute;
+  top: 26px;
+  left: 29px;
+  z-index: 3;
+}
+
+.brand {
+  position: relative;
+  display: block;
+  width: 215px;
+  height: 58px;
+  overflow: visible;
+  text-decoration: none;
+}
+
+.brand--compact {
+  width: 188px;
+  height: 51px;
+}
+
+.brand img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 284px;
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+.brand--compact img {
+  width: 248px;
+}
+
+.splash__statement {
+  position: absolute;
+  z-index: 3;
+  left: 29px;
+  bottom: 73px;
+  max-width: 410px;
+  margin: 0;
+  font-size: clamp(26px, 2.2vw, 38px);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.auth-panel {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 100vh;
+  flex-direction: column;
+  background: #fff;
+}
+
+.auth-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 72px 112px;
+}
+
+.auth-form {
+  display: flex;
+  width: 100%;
+  max-width: 420px;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.form-logo {
+  position: relative;
+  width: 152px;
+  height: 46px;
+  margin: 0 auto 32px;
+}
+
+.form-logo img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 190px;
+  max-width: none;
+  transform: translate(-50%, -50%);
+}
+
+.oauth-button,
+.submit-button,
+.field {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 7px;
+}
+
+.oauth-button,
+.submit-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid #c9c9c9;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease;
+}
+
+.oauth-button {
+  color: #171717;
+  background: #fff;
+}
+
+.oauth-button:hover {
+  background: #f7f7f7;
+  border-color: #aaa;
+}
+
+.oauth-button svg {
+  position: absolute;
+  left: 17px;
+  width: 20px;
+  height: 20px;
+}
+
+.oauth-button:active,
+.submit-button:active {
+  transform: translateY(1px);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+  color: #777;
+  font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: #e6e6e6;
+}
+
+.field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  border: 1px solid #cfcfcf;
+  background: #fff;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.field:focus-within {
+  border-color: #765dfb;
+  box-shadow: 0 0 0 1px #765dfb;
+}
+
+.field input {
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  padding: 0 16px;
+  border: 0;
+  outline: 0;
+  color: #111;
+  background: transparent;
+  font-size: 15px;
+}
+
+.field input::placeholder {
+  color: #777;
+  opacity: 1;
+}
+
+.field--password input {
+  padding-right: 48px;
+}
+
+.visibility-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: grid;
+  width: 48px;
+  height: 50px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  color: #666;
+  background: transparent;
+  cursor: pointer;
+}
+
+.visibility-button svg,
+.beta-notice button svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.submit-button {
+  margin-top: 2px;
+  border-color: #111;
+  color: #fff;
+  background: #111;
+}
+
+.submit-button:hover {
+  border-color: #765dfb;
+  background: #765dfb;
+}
+
+.text-link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.forgot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  width: 100%;
+}
+
+.forgot-link {
+  font-size: 14px;
+}
+
+.guest-link {
+  font-size: 14px;
+}
+
+.signup-copy {
+  margin: 43px 0 0;
+  font-size: 14px;
+  text-align: center;
+}
+
+.form-message {
+  margin: 18px 0 -20px;
+  color: #5c45d6;
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.legal-links {
+  position: absolute;
+  right: 0;
+  bottom: 56px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  gap: 23px;
+  color: #666;
+  font-size: 12px;
+}
+
+.legal-links a {
+  text-decoration: none;
+}
+
+.legal-links a:hover {
+  color: #111;
+  text-decoration: underline;
+}
+
+.beta-notice {
+  position: fixed;
+  z-index: 20;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 54px 9px 20px;
+  border-top: 1px solid rgba(59, 43, 134, .15);
+  color: #241e43;
+  background: #eeeaff;
+  font-size: 12px;
+  text-align: center;
+}
+
+.beta-notice p {
+  margin: 0;
+}
+
+.beta-notice button {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  display: grid;
+  width: 30px;
+  height: 30px;
+  transform: translateY(-50%);
+  place-items: center;
+  padding: 0;
+  border: 0;
+  color: #241e43;
+  background: transparent;
+  cursor: pointer;
+}
+
+.mobile-brand {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .auth-shell {
+    grid-template-columns: 43% 57%;
+  }
+
+  .auth-content {
+    padding-inline: 44px;
+  }
+}
+
+@media (max-width: 700px) {
+  .auth-shell {
+    display: block;
+  }
+
+  .splash {
+    display: none;
+  }
+
+  .auth-panel {
+    min-height: 100svh;
+  }
+
+  .mobile-brand {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    display: block;
+  }
+
+  .auth-content {
+    padding: 112px 24px 136px;
+  }
+
+  .auth-form {
+    max-width: 400px;
+  }
+
+}
+
+@media (max-height: 700px) and (min-width: 701px) {
+  .auth-content {
+    align-items: flex-start;
+    overflow-y: auto;
+    padding-top: 62px;
+  }
+
+  .splash__statement {
+    bottom: 62px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
